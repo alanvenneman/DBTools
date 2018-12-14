@@ -6,12 +6,16 @@ from datetime import datetime
 path_sde_connection = "C:\\Users\\GISAdmin\\AppData\\Roaming\\ESRI\\ArcGISPro\\Favorites\\Default.sde"
 utility_features = os.path.join(path_sde_connection, "ArcSDE.SDE.Utilities_SANITARY\\ArcSDE.SDE.sGravityMain")
 
+date_to_string = []
 rows = arcpy.da.SearchCursor(utility_features, "InstallDate")
 for row in rows:
-    if row is not 'NoneType':
-        datetimeVal = row[0]
-        formattedTime = datetime.strftime(datetimeVal, '%m/%d/%Y')
-        print(formattedTime)
+    datetimeVal = row[0]
+    if datetimeVal is not None:
+        formattedTime = datetime.strftime(datetimeVal, '%Y')
+        date_to_string.append(formattedTime)
+    else:
+        date_to_string.append('check year')
+        print('null year')
 
 
 def year_slice(install, year):
