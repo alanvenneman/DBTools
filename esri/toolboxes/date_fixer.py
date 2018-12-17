@@ -17,9 +17,10 @@ for row in rows:
         date_to_string.append('check year')
         print('null year')
 
+# TODO put the year_slice inside an Update or Insert Cursor loop
 
 def year_slice(install, year):
-    if install != '' and install != "#":
+    if install != 'check year' and install != "#":
         if install[-4:-2] == '20' or install[-4:-2] == '19':
             if year != install[-4:]:
                 if year == '' or year == '#':
@@ -39,22 +40,5 @@ def year_slice(install, year):
     else:
         print("check {}".format(year))
 
-    # if year != install[-4:-2]:
-    # else:
-    #     print(f"check {year}")
-
 
 year_slice("", "")
-# print("check {}".format(year))
-
-# def year_slice2(install, year):
-#     if year != install[-4:]:
-#         if year == '' or year == '#':
-#             print(install[-4:])
-#         else:
-#             print(f"check {year}")
-#     else:
-#         print(year)
-#
-#
-# year_slice2("2010", "2010")
