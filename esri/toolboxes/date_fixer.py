@@ -19,6 +19,7 @@ for row in rows:
 
 # TODO put the year_slice inside an Update or Insert Cursor loop
 
+
 def year_slice(install, year):
     if install != 'check year' and install != "#":
         if install[-4:-2] == '20' or install[-4:-2] == '19':

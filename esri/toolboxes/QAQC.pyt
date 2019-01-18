@@ -62,7 +62,14 @@ class ProjectIDTool(object):
             direction="Output")
         param4.parameterDependencies = [param0.name]
 
-        params = [param0, param1, param2, param3, param4]
+        param5 = arcpy.Parameter(
+            displayName="SDE Password",
+            name="password",
+            datatype="GPString",
+            parameterType="Required",
+            direction="Output")
+
+        params = [param0, param1, param2, param3, param4, param5]
         return params
 
     def isLicensed(self):
@@ -227,6 +234,7 @@ class ProjectIDTool(object):
         xdatabase = parameters[2].valueAsText
         xpath_sde_connection = parameters[3].valueAsText
         xoutput_feature = parameters[4].valueAsText
+        xpassword = parameters[5].valueAsText
 
         ## Hard-coded paths for testing only.
         path_sde_connection = "C:\\Users\\GISAdmin\\AppData\\Roaming\\ESRI\\ArcGISPro\\Favorites\\Default.sde"
@@ -234,6 +242,7 @@ class ProjectIDTool(object):
         database = "C:\\Users\\GISAdmin\\Documents\\ArcGIS\\Projects\\ProjectSerialNumberTool\\ProjectSerialNumberTool.gdb"
         output_feature = os.path.join(path_sde_connection, "ArcSDE.SDE.Utilities_SANITARY\\ArcSDE.SDE.sGravityMain")
         subdivision_feature = os.path.join(path_sde_connection, "Subdivisions_Res")
+        password = input("Enter password: ")
 
         # path_sde_connection = "C:\\Users\\avenneman\\AppData\\Roaming\\ESRI\\Desktop10.5\\ArcCatalog\\Test VS607.sde"
         # utility_features = os.path.join(path_sde_connection, "arcsde.SDE.Utilities_DRAINAGE\\ArcSDE.SDE.dGravityMain")
@@ -252,7 +261,7 @@ class ProjectIDTool(object):
         serverName = "vs329"
         authType = "DATABASE_AUTH"
         username = "sde"
-        password = "sde91admin"
+        password = password
         saveUserInfo = "SAVE_USERNAME"
         versionName = "SDE.DEFAULT"
 

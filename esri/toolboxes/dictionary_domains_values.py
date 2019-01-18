@@ -10,7 +10,7 @@ else:
     shutil.rmtree(TEMP)
     os.makedirs(TEMP)
 
-path_sde_connection = "C:\\Users\\GISAdmin\\AppData\\Roaming\\ESRI\\ArcGISPro\\Favorites\\Default.sde"
+path_sde_connection = "C:\\Users\\GISAdmin\\AppData\\Roaming\\ESRI\\ArcGISPro\\Favorites\\Test.sde"
 utility_features = os.path.join(path_sde_connection, "ArcSDE.SDE.Utilities_SANITARY\\ArcSDE.SDE.sGravityMain")
 database = "C:\\Users\\GISAdmin\\Documents\\ArcGIS\\Projects\\ProjectSerialNumberTool\\ProjectSerialNumberTool.gdb"
 subdivision_feature = os.path.join(path_sde_connection, "Subdivisions_Res")
@@ -31,6 +31,8 @@ for u_field in utility_fields:
         utility_types.append(u_field.type)
 del utility_domains[0]
 del utility_types[0]
+# print(f"{utility_domains} {len(utility_domains)}")
+# print(f"{utility_types} {len(utility_types)}")
 utility_types[:] = ['TEXT' if x == 'String' else x for x in utility_types]
 utility_types[:] = ['SHORT' if x == 'SmallInteger' else x for x in utility_types]
 utility_types[:] = ['LONG' if x == 'Integer' else x for x in utility_types]
@@ -41,23 +43,28 @@ utility_types[:] = ['FLOAT' if x == 'Double' else x for x in utility_types]
 #     for t in utility_types:
 #         utility_dict[d] = t
 # print(utility_dict)
+utility_dict = zip(utility_domains, utility_types)
+result_utility_dict = list(utility_dict)
+
+print(result_utility_dict[0][1])
 
 domains = arcpy.da.ListDomains(path_sde_connection)
 for domain in domains:
     if domain.name in utility_domains:
         if domain.domainType == 'CodedValue':
+            print(domain.name, domain.description)
             coded_values = domain.codedValues
-            for d, t in zip(utility_domains, utility_types):
-                # create coded domain
-                arcpy.CreateDomain_management(gdb_copy, domain.name, domain.description, t, "CODED", "DUPLICATE", "DEFAULT")
-                # check the domain of the new geodatabase
-                new_domains = arcpy.da.ListDomains(gdb_copy)
-                for new_domain in new_domains:
-                    print(new_domain.name)
-                for val, desc in coded_values.items():
-                    print('{0} : {1}'.format(val, desc))
-                    # Add each domain value
-                    arcpy.AddCodedValueToDomain_management(gdb_copy, domain.name, val, desc)
+            print(coded_values)
+
+            arcpy.CreateDomain_management(gdb_copy, domain.name, domain.description, "TEXT", "CODED", "DUPLICATE", "DEFAULT")
+            # check the domain of the new geodatabase
+            new_domains = arcpy.da.ListDomains(gdb_copy)
+            for new_domain in new_domains:
+                print(new_domain.name)
+            for val, desc in coded_values.items():
+                print('{0} : {1}'.format(val, desc))
+                # Add each domain value
+                arcpy.AddCodedValueToDomain_management(gdb_copy, domain.name, val, desc)
         elif domain.domainType == 'Range':
             # TODO create range domain
             print('Min: {0}'.format(domain.range[0]))
@@ -65,5 +72,5 @@ for domain in domains:
             # TODO add domain range value
         # TODO Assign Domain To Field Tool
 
-        # utility_copy = arcpy.CopyFeatures_management(utility_features, "utility_copy")
-        # subdivision_copy = arcpy.CopyFeatures_management(subdivision_feature, "subdivision_copy")
+        utility_copy = arcpy.CopyFeatures_management(utility_features, "utility_copy")
+        subdivision_copy = arcpy.CopyFeatures_management(subdivision_feature, "subdivision_copy")
