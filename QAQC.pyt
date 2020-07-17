@@ -196,7 +196,7 @@ class ProjectIDTool(object):
         serverName = "vs329"
         authType = "DATABASE_AUTH"
         username = "sde"
-        password = "sde91admin"
+        password = ""
         saveUserInfo = "SAVE_USERNAME"
         versionName = "SDE.DEFAULT"
 
