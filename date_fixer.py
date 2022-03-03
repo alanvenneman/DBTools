@@ -3,8 +3,8 @@ import os
 from datetime import datetime
 
 
-path_sde_connection = "C:\\Users\\GISAdmin\\AppData\\Roaming\\ESRI\\ArcGISPro\\Favorites\\Default.sde"
-utility_features = os.path.join(path_sde_connection, "ArcSDE.SDE.Utilities_SANITARY\\ArcSDE.SDE.sGravityMain")
+path_sde_connection = "C:\\Users\\%\\Default.sde"
+utility_features = os.path.join(path_sde_connection, "ArcSDE.%sGravityMain")
 
 date_to_string = []
 rows = arcpy.da.SearchCursor(utility_features, "InstallDate")
