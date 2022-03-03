@@ -179,21 +179,21 @@ class ProjectIDTool(object):
         output_feature = parameters[4].valueAsText
 
         ## Hard-coded paths for testing only.
-        # path_sde_connection = "C:\\Users\\GISAdmin\\AppData\\Roaming\\ESRI\\ArcGISPro\\Favorites\\Default.sde"
-        # utility_features = os.path.join(PathSdeConnection, "ArcSDE.SDE.Utilities_SANITARY\\ArcSDE.SDE.sGravityMain")
-        # database = "C:\\Users\\GISAdmin\\Documents\\ArcGIS\\Projects\\ProjectSerialNumberTool\\ProjectSerialNumberTool.gdb"
-        # output_feature = os.path.join(PathSdeConnection, "ArcSDE.SDE.Utilities_SANITARY\\ArcSDE.SDE.sGravityMain")
+        # path_sde_connection = "Default.sde"
+        # utility_features = os.path.join(PathSdeConnection, "sGravityMain")
+        # database = "ProjectSerialNumberTool.gdb"
+        # output_feature = os.path.join(PathSdeConnection, "Utilities_SANITARY\\sGravityMain")
         # subdivision_feature = os.path.join(PathSdeConnection, "Subdivisions_Res")
 
-        # path_sde_connection = "C:\\Users\\avenneman\\AppData\\Roaming\\ESRI\\Desktop10.5\\ArcCatalog\\Test VS607.sde"
-        # utility_features = os.path.join(PathSdeConnection, "arcsde.SDE.Utilities_DRAINAGE\\ArcSDE.SDE.dGravityMain")
-        # database = "C:\\Users\\avenneman\\Documents\\Programming\\SelectWork\\Features.gdb"
-        # output_feature = os.path.join(PathSdeConnection, "arcsde.SDE.Utilities_DRAINAGE\\ArcSDE.SDE.dGravityMain")
+        # path_sde_connection = "Test VS607.sde"
+        # utility_features = os.path.join(PathSdeConnection, "dGravityMain")
+        # database = "Features.gdb"
+        # output_feature = os.path.join(PathSdeConnection, "dGravityMain")
         # subdivision_feature = os.path.join(PathSdeConnection, "Subdivisions_Res")
 
         temp = r"C:\Temp"
         file = "SDEConn"
-        serverName = "vs329"
+        serverName = ""
         authType = "DATABASE_AUTH"
         username = "sde"
         password = ""
