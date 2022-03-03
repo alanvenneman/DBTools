@@ -10,9 +10,9 @@ else:
     shutil.rmtree(TEMP)
     os.makedirs(TEMP)
 
-path_sde_connection = "C:\\Users\\GISAdmin\\AppData\\Roaming\\ESRI\\ArcGISPro\\Favorites\\Test.sde"
-utility_features = os.path.join(path_sde_connection, "ArcSDE.SDE.Utilities_SANITARY\\ArcSDE.SDE.sGravityMain")
-database = "C:\\Users\\GISAdmin\\Documents\\ArcGIS\\Projects\\ProjectSerialNumberTool\\ProjectSerialNumberTool.gdb"
+path_sde_connection = "C:\\%\\Test.sde"
+utility_features = os.path.join(path_sde_connection, "ArcSDE.%sGravityMain")
+database = "C:\\%\\ProjectSerialNumberTool.gdb"
 subdivision_feature = os.path.join(path_sde_connection, "Subdivisions_Res")
 
 arcpy.ClearEnvironment("workspace")
